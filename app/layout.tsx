@@ -7,25 +7,11 @@ export const metadata: Metadata = {
   description: "Created using the ultimate interactive Next.js stack generator CLI.",
 };
 
-const isClerkConfigured = 
-  !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && 
-  !!process.env.CLERK_SECRET_KEY;
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  if (!isClerkConfigured) {
-    return (
-      <html lang="en">
-        <body style={{ margin: 0, padding: 0 }}>
-          {children}
-        </body>
-      </html>
-    );
-  }
-
   return (
     <ClerkProvider>
       <html lang="en">
